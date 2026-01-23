@@ -1,0 +1,163 @@
+FRAUD DETECTION – END TO END EXECUTION INSTRUCTIONS
+==================================================
+
+This document explains how to execute the Fraud Detection Analytics project
+end-to-end using VS Code, Jupyter Notebook, Streamlit, and Power BI.
+
+--------------------------------------------------
+1. PROJECT STRUCTURE
+--------------------------------------------------
+Ensure the project folder contains the following files:
+
+fraud-detection-analytics/
+│
+├── data/
+│   └── Fraud_Analysis_Dataset.csv
+│
+├── notebooks/
+│   └── fraud_detection_capstone.ipynb
+│
+├── powerbi/
+│   ├── Fraud_Detection_Dashboard.pbix
+│   └── dashboard_screenshots/
+│
+├── streamlit/
+│   ├── app.py
+│   ├── model.pkl
+│   ├── scaler.pkl
+│   ├── encoder.pkl
+│   └── requirements.txt
+│
+├── run_instructions.txt
+└── README.md
+
+--------------------------------------------------
+2. PREREQUISITES
+--------------------------------------------------
+- Python 3.9 or above must be installed
+- VS Code must be installed
+- Power BI Desktop (optional, for dashboard viewing)
+- Internet connection for installing packages
+
+--------------------------------------------------
+3. OPEN PROJECT IN VS CODE
+--------------------------------------------------
+1. Open VS Code
+2. Click on File → Open Folder
+3. Select the fraud-detection-analytics folder
+
+--------------------------------------------------
+4. CREATE & ACTIVATE VIRTUAL ENVIRONMENT (RECOMMENDED)
+--------------------------------------------------
+
+Open the VS Code terminal (Ctrl + `)
+
+Create virtual environment:
+    python -m venv venv
+
+Activate virtual environment:
+
+For Windows:
+    venv\Scripts\activate
+
+For Mac/Linux:
+    source venv/bin/activate
+
+You should see (venv) in the terminal.
+
+--------------------------------------------------
+5. INSTALL REQUIRED DEPENDENCIES
+--------------------------------------------------
+
+Navigate to the Streamlit folder:
+    cd streamlit
+
+Install dependencies:
+    pip install -r requirements.txt
+
+If requirements.txt is missing, install manually:
+    pip install streamlit pandas numpy scikit-learn joblib
+
+--------------------------------------------------
+6. TRAIN THE MODEL (ONE TIME)
+--------------------------------------------------
+
+Open the notebook:
+    notebooks/fraud_detection_capstone.ipynb
+
+Run all cells from top to bottom.
+
+After successful execution, the following files will be generated
+inside the streamlit folder:
+    - model.pkl
+    - scaler.pkl
+    - encoder.pkl
+
+--------------------------------------------------
+7. RUN STREAMLIT APPLICATION
+--------------------------------------------------
+
+From the streamlit directory, run:
+    streamlit run app.py
+
+Terminal will display:
+    Local URL: http://localhost:8501
+
+Open the URL in a browser to access the application.
+
+--------------------------------------------------
+8. TESTING THE APPLICATION
+--------------------------------------------------
+
+Use sample values such as:
+
+Fraud Example:
+    step: 10
+    type: TRANSFER
+    amount: 150000
+    oldbalanceOrg: 200000
+    newbalanceOrig: 50000
+    oldbalanceDest: 0
+    newbalanceDest: 150000
+
+Legitimate Example:
+    step: 5
+    type: PAYMENT
+    amount: 1200
+    oldbalanceOrg: 5000
+    newbalanceOrig: 3800
+    oldbalanceDest: 15000
+    newbalanceDest: 16200
+
+--------------------------------------------------
+9. COMMON ERRORS & FIXES
+--------------------------------------------------
+
+1. Error: streamlit not recognized
+   Fix: pip install streamlit
+
+2. Error: model.pkl not found
+   Fix: Run the notebook and generate model files first
+
+3. Error: ModuleNotFoundError
+   Fix: Activate virtual environment and reinstall dependencies
+
+4. Error: Streamlit launcher / venv conflict
+   Fix:
+       python -m streamlit run app.py
+
+--------------------------------------------------
+10. PROJECT SUMMARY
+--------------------------------------------------
+
+- Exploratory Data Analysis performed on fraud transaction data
+- Multiple ML models were trained and evaluated
+- Best model selected using Recall as the primary metric
+- Model and preprocessing objects saved using joblib
+- Streamlit application built for real-time fraud prediction
+- Power BI dashboard created for executive-level analysis
+- End-to-end machine learning lifecycle implemented successfully
+
+==================================================
+END OF FILE
+==================================================
